@@ -65,13 +65,18 @@ public class WebServer extends Thread {
         }
         else                 
         {
+            if(args[0].equals("--help")){
+                printHelp("");
+                return;
+            }
             try{
                 port = Integer.parseInt(args[0]);
                 rootDir = args[1];
                 if (rootDir.endsWith("/")) rootDir = rootDir.substring(0, rootDir.length()-1);
                 
             }catch(NumberFormatException e){        
-                printHelp("");
+                printHelp("Invalid arguments.\n\n");
+                System.out.println("\nExiting.");
                 return;
             }catch(ArrayIndexOutOfBoundsException e)
             {}
